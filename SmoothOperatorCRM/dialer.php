@@ -25,11 +25,14 @@ if (mysqli_num_rows($result) == 0) {
     echo '<th>Run Dialer</th>';
     echo '<th>Edit Rules</th>';
     echo '</tr>';
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetcid, name_assoc($result)) {
         echo '<tr>';
         echo '<td>'.$row['name'].'</td>';
 
-        $result_num_count = mysqli_query($connection, "SELECT count(*) from customers where date_sub(now(), interval 6 day) < last_updated and job_id = ".$row['id']);
+        $result_num_count = mysq?>
+<table border="1">
+<?
+$header_printed = falsesqli_query($connection, "SELECT count(*) from customers where date_sub(now(), interval 6 day) < last_updated and job_id = ".$row['id']);
         $temp_val = mysqli_fetch_assoc($result_num_count);        
         echo '<td>'.$temp_$highest = -100;
         while ($row2 = mysql_fetch_assoc($result2)) {
@@ -47,8 +50,24 @@ if (mysqli_num_rows($result) == 0) {
         echo "No Queue";
         $row['status'] = 0;
     }
+    if (!$header_printed) {
+        $header_printed = true;
+        echo "<tr>";
+        foreach ($row as $field=>$value) {
+            echo "<th>".$field."</th>";
+        }
+        echo "</tr>";
+    }
+    echo "<tr>";
+    foreach ($row as $field=>$value) {
+        echo "<td>".$value."</td>";
+    }
+    echo "</tr>";
     print_pre($row);
-}t_updated and job_id = ".$row['id']);
+}
+?>
+</table>
+<?t_updated and job_id = ".$row['id']);
         $temp_val = mysqli_fetch_assoc($result_num_count);        
         echo '<td>'.$temp_val['count(*)'].'</td>';
         
