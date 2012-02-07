@@ -31,33 +31,21 @@ if (mysqli_num_rows($result) == 0) {
 
         $result_num_count = mysqli_query($connection, "SELECT count(*) from customers where date_sub(now(), interval 6 day) < last_updated and job_id = ".$row['id']);
         $temp_val = mysqli_fetch_assoc($result_num_count);        
-        echo '<td>'.$temp_val['count(*)'].'</td>';
-        
-        $result_num_count = mysqli_query($connection, "SELECT count(*) from customers where date_sub(now(), interval 13 day) < last_updated and date_sub(now(), interval 7 day) > last_updated and job_id = ".$row['id']);
-        $temp_val = mysqli_fetch_assoc($result_num_count);        
-        echo '<td>'.$temp_val['count(*)'].'</td>';
-        
-        $result_num_count = mysqli_query($connection, "SELECT count(*) from customers where date_sub(now(), interval 20 day) < last_updated and date_sub(now(), interval 14 day) > last_updated and job_id = ".$row['id']);
-        $temp_val = mysqli_fetch_assoc($result_num_count);        
-        echo '<td>'.$temp_val['count(*)'].'</td>';
-        
-        $result_num_count = mysqli_query($connection, "SELECT count(*) from customers where date_sub(now(), interval 27 day) < last_updated and date_sub(now(), interval 21 day) > last_updated and job_id = ".$row['id']);
-        $temp_val = mysqli_fetch_assoc($result_num_count);        
-        echo '<td>'.$temp_val['count(*)'].'</td>';
-        
-        $result_num_count = mysqli_query($connection, "SELECT count(*) from customers where date_sub(now(), interval 28 day) > last_updated and job_id = ".$row['id']);
-        $temp_val = mysqli_fetch_assoc($result_num_count);        
-        echo '<td>'.$temp_val['count(*)'].'</td>';
-
-        echo '<td>'.$temp_val['count(*)'].'</td>';
-        echo '<td>'.$temp_val['count(*)'].'</td>';
-
-        echo '</tr>';
+        echo '<td>'.$temp_$highest = -100;
+        while ($row2 = mysql_fetch_assoc($result2)) {
+            if ($row['status'] >$highest && $row['status'] != 104 && $row['status'] != 4) {
+                $highest = $row['status'];
+            }
+        }
+        $row['status'] = $highest;
+    } else {
+        /* Does not have a queue entry associated */
+        echo "No Queue";
+        $row['status'] = 0;
     }
-    echo '</table>';
-}
-?>
-</div>
-<?
-require "footer.php";
-?>
+    print_pre($row);
+}t_updated and job_id = ".$row['id']);
+        $temp_val = mysqli_fetch_assoc($result_num_count);        
+        echo '<td>'.$temp_val['count(*)'].'</td>';
+        
+        $result_num_count = mysqli_query($connection, "SELECT count(*) from customers where date_sub(now(), interval 20 day) < last_updated and date_sub(now(), interval 14 day) > last_updated and job_id = ".$row[
