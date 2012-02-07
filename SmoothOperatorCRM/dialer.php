@@ -55,7 +55,7 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
         }
     } else {
         /* Does not have a queue entry associated */
-        echo "No Queue";
+        //echo "No Queue";
         $row['status'] = 0;
         $row['progress'] = 0;
         $row['busy'] = 0;
