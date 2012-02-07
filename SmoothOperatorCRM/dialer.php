@@ -30,7 +30,7 @@ if (mysqli_num_rows($result) == 0) {
         echo '<td>'.$row['name'].'</td>';
 
         $result_num_count = mysq?>
-<table border="1">
+<table class="sample2">
 <?
 $header_printed = falsesqli_query($connection, "SELECT count(*) from customers where date_sub(now(), interval 6 day) < last_updated and job_id = ".$row['id']);
         $temp_val = mysqli_fetch_assoc($result_num_count);        
@@ -38,23 +38,35 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
         while ($row2 = mysql_fetch_assoc($result2)) {
             /* A status of 1 means about to start, 2 means about to stop.      */
             /* Once processed it will add 100, so 101 means started, 102 means */
-            /* stopped.  4 and 104 are for changing agent numbers.             */
-            if ($row2['status'] >$highest && $row2['status'] != 104 && $row2['status'] != 4) {
+            /* stopped.  3 and 103 are for changing agent numbers.             */
+            if ($row2['status'] >$highest && $row2['status'] != 103 && $row2['status'] != 3) {
                 $highest = $row2['status'];
             }
             print_pre($row2);
         }
         $row['status'] = $highest;
+        $row['progress'] = $row2['progress'];
+        $row['busy'] = $row2['flags'];
+        $row['total'] = $row2['maxcalls'];
+        if ($row['total'] > 0) {
+            $row['percentage_busy'] = round($row['busy']/$row['total']*100,2);
+        } else {
+            $row['percentage_busy'] = 0.00;
+        }
     } else {
         /* Does not have a queue entry associated */
         echo "No Queue";
         $row['status'] = 0;
+        $row['progress'] = 0;
+        $row['busy'] = 0;
+        $row['total'] = 0;
+        $row['percentage_busy'] = 0.00;
     }
     if (!$header_printed) {
         $header_printed = true;
         echo "<tr>";
         foreach ($row as $field=>$value) {
-            echo "<th>".$field."</th>";
+            echo '<th style="background: #000;color: #fff; border: 1px solid #ccc"><center>'.ucfirst(str_replace("_"," ",$field))."</center></th>";
         }
         echo "</tr>";
     }
@@ -63,7 +75,7 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
         echo "<td>".$value."</td>";
     }
     echo "</tr>";
-    print_pre($row);
+    //print_pre($row);
 }
 ?>
 </table>
