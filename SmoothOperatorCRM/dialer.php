@@ -11,7 +11,7 @@ The way this is done is by setting up rules for which numbers you would like to 
 /*
  Dialing rules 
  */
-$result = mysqli_query($connection, "SELECT * FROM jobs");
+$re$rounded[] = "div.thin_700px_box";esult = mysqli_query($connection, "SELECT * FROM jobs");
 if (mysqli_num_rows($result) == 0) {
     echo "Before you create rules to dial some jobs you will need to create jobs.";
 } else {
@@ -30,7 +30,9 @@ if (mysqli_num_rows($result) == 0) {
         echo '<td>'.$row['name'].'</td>';
 
         $result_num_count = mysq?>
-<table class="sample2">
+<div class="thin_700px_box">
+<table class="sample2" width="100%">
+<tbody>
 <?
 $header_printed = falsesqli_query($connection, "SELECT count(*) from customers where date_sub(now(), interval 6 day) < last_updated and job_id = ".$row['id']);
         $temp_val = mysqli_fetch_assoc($result_num_count);        
@@ -66,19 +68,25 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
         $header_printed = true;
         echo "<tr>";
         foreach ($row as $field=>$value) {
-            echo '<th style="background: #000;color: #fff; border: 1px solid #ccc"><center>'.ucfirst(str_replace("_"," ",$field))."</center></th>";
+            echo '<th><center>'.ucfirst(str_replace("_"," ",$field))."</center></th>";
         }
         echo "</tr>";
     }
     echo "<tr>";
     foreach ($row as $field=>$value) {
-        echo "<td>".$value."</td>";
+        if ($field == "status") {
+            echo "<td>".$value."</td>";
+        } else {
+            echo "<td>".$value."</td>";
+        }
     }
     echo "</tr>";
     //print_pre($row);
 }
 ?>
+</tbody>
 </table>
+</div>
 <?t_updated and job_id = ".$row['id']);
         $temp_val = mysqli_fetch_assoc($result_num_count);        
         echo '<td>'.$temp_val['count(*)'].'</td>';
