@@ -43,13 +43,13 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
             /* stopped.  3 and 103 are for changing agent numbers.             */
             if ($row2['status'] >$highest && $row2['status'] != 103 && $row2['status'] != 3) {
                 $highest = $row2['status'];
+                $row['progress'] = $row2['progress'];
+                $row['busy'] = $row2['flags'];
+                $row['total'] = $row2['maxcalls'];
             }
-            print_pre($row2);
+            //print_pre($row2);
         }
         $row['status'] = $highest;
-        $row['progress'] = $row2['progress'];
-        $row['busy'] = $row2['flags'];
-        $row['total'] = $row2['maxcalls'];
         if ($row['total'] > 0) {
             $row['percentage_busy'] = round($row['busy']/$row['total']*100,2);
         } else {
