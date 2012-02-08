@@ -91,10 +91,12 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
                 case 101:
                     break;
                 case 102:
-                    break
+                    break;
                 case 103:
                     break;
                 case 104:
+                    break;
+                default:
                     break;
             }
             echo "<td>".$value."</td>";
