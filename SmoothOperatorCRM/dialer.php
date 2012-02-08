@@ -58,10 +58,10 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
     } else {
         /* Does not have a queue entry associated */
         //echo "No Queue";
-        $row['status'] = 0;
         $row['progress'] = 0;
         $row['busy'] = 0;
         $row['total'] = 0;
+        $row['status'] = 0;
         $row['percentage_busy'] = 0.00;
     }
     
