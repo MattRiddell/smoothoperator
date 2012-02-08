@@ -64,11 +64,22 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
         $row['total'] = 0;
         $row['percentage_busy'] = 0.00;
     }
+    
+    $result_x = mysqli_query($connection, "SELECT name FROM jobs WHERE id = ".($row['id']-100000));
+    $row_x =mysqli_fetch_assoc($result_x);
+    $row['name'] = $row_x['name'];
+    
     if (!$header_printed) {
         $header_printed = true;
         echo "<tr>";
         foreach ($row as $field=>$value) {
-            echo '<th><center>'.ucfirst(str_replace("_"," ",$field))."</center></th>";
+            if ($field == "progress") {
+                echo '<th><center>Dialed</center></th>';
+            } else if ($field == "id") {
+            } else {
+                echo '<th><center>'.ucfirst(str_replace("_"," ",$field))."</center></th>";
+            }
+            
         }
         echo "</tr>";
     }
@@ -86,7 +97,7 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
                 case 1:
                 case 101:
                     // Running
-                    echo "<td $style>Running</td>";
+                    echo '<td '.$style.'>Running&nbsp;<a href="dialer.php?stop='.$row['id'].'"><img src="images/control_stop_blue.png" alt="Stop Campaign" border="0" valign="middle"></a></td>';
                     break;
                 case 103:
                 case 104:
@@ -98,12 +109,13 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
                 case 2:
                 default:
                     // Not running
-                    echo "<td $style>Not Running</td>";
+                    echo '<td '.$style.'><center><a href="dialer.php?start='.$row['id'].'">Not Running&nbsp;<img src="images/control_play_blue.png" alt="Stop Campaign" border="0" valign="middle"></a></center></td>';
                     break;
             }
+        } else if ($field == "id") {
             
         } else {
-            echo "<td $style>".$value."</td>";
+            echo "<td $style><center>".$value."</center></td>";
         }
     }
     echo "</tr>";
