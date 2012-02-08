@@ -44,7 +44,7 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
             if ($row2['status'] >$highest && $row2['status'] != 103 && $row2['status'] != 3) {
                 $highest = $row2['status'];
             }
-            //print_pre($row2);
+            print_pre($row2);
         }
         $row['status'] = $highest;
         $row['progress'] = $row2['progress'];
