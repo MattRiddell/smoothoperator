@@ -119,7 +119,7 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
         }
     }
     echo "</tr>";
-    //print_pre($row);
+    print_pre($row);
 }
 ?>
 </tbody>
