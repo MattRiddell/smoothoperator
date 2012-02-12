@@ -138,7 +138,7 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
         }
     }
     echo "</tr>";
-    print_pre($row);
+    //print_pre($row);
 }
 ?>
 </tbody>
@@ -148,4 +148,4 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
         $temp_val = mysqli_fetch_assoc($result_num_count);        
         echo '<td>'.$temp_val['count(*)'].'</td>';
         
-        $result_num_count = mysqli_query($connection, "SELECT count(*) from customers where date_sub(now(), interval 20 day) < last_updated and date_sub(now(), interval 14 day) > last_updated and job_id = ".$row[
+        $result_num_count = mysqli_query($connection, "SELECT count(*) from customers where date_sub(now(), interval 20 day) < last_updated and date_sub(now(), int//erval 14 day) > last_updated and job_id = ".$row[
