@@ -124,7 +124,7 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
             </script>
             <?
             echo "</center></td>";
-        } else if ($field == "progress") {
+        /*} else if ($field == "progress") {
             echo "<td $style><center>";
             ?>
             <div id="progress_<?=$row['id']?>" style="height: 10px; width: 150px"></div>
@@ -132,7 +132,7 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
             jQuery("#progress_<?=$row['id']?>").progressbar({value: <?=$value?>});
             </script>
             <?
-            echo "</center></td>";
+            echo "</center></td>";*/
         } else {
             echo "<td $style><center>".$value."</center></td>";
         }
