@@ -91,6 +91,7 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
         // Campaign is not running
         $style=' style="background: #fff"';
     }
+    //$row['percentage_busy']=30;
     foreach ($row as $field=>$value) {
         if ($field == "status") {
             switch ($value) {
@@ -114,6 +115,24 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
             }
         } else if ($field == "id") {
             
+        } else if ($field == "percentage_busy") {
+            echo "<td $style><center>";
+            ?>
+            <div id="perc_busy_<?=$row['id']?>" style="height: 10px; width: 150px"></div>
+            <script>
+            jQuery("#perc_busy_<?=$row['id']?>").progressbar({value: <?=$value?>});
+            </script>
+            <?
+            echo "</center></td>";
+        } else if ($field == "progress") {
+            echo "<td $style><center>";
+            ?>
+            <div id="progress_<?=$row['id']?>" style="height: 10px; width: 150px"></div>
+            <script>
+            jQuery("#progress_<?=$row['id']?>").progressbar({value: <?=$value?>});
+            </script>
+            <?
+            echo "</center></td>";
         } else {
             echo "<td $style><center>".$value."</center></td>";
         }
