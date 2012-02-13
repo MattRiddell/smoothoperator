@@ -30,6 +30,24 @@ if (mysqli_num_rows($result) == 0) {
         echo '<td>'.$row['name'].'</td>';
 
         $result_num_count = mysq?>
+<script>
+var $the_dialog;
+jQuery(document).ready(function() {
+                $the_dialog = jQuery('#start_campaign_dialog').dialog({
+                                        autoOpen: false,
+                                        modal: true,
+                                        buttons: {
+                                        Ok: function() {
+                                        jQuery( this ).dialog( "close" );
+                                        }
+                                        }
+                                        });
+                  });
+function show_start(campaign_id, title) {
+    jQuery('#start_campaign_dialog').dialog("option","title","Start "+title);
+    $the_dialog.dialog('open');
+}
+</script>
 <div class="thin_700px_box">
 <table class="sample2" width="100%">
 <tbody>
@@ -110,7 +128,7 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
                 case 2:
                 default:
                     // Not running
-                    echo '<td '.$style.'><center><a href="dialer.php?start='.$row['id'].'">Not Running&nbsp;<img src="images/control_play_blue.png" alt="Stop Campaign" border="0" valign="middle"></a></center></td>';
+                    echo '<td '.$style.'><center><a href="#" onclick="show_start('.$row['id'].',\''.$row['name'].'\');return false;">Not Running&nbsp;<img src="images/control_play_blue.png" alt="Stop Campaign" border="0" valign="middle"></a></center></td>';
                     break;
             }
         } else if ($field == "id") {
@@ -144,8 +162,20 @@ $header_printed = falsesqli_query($connection, "SELECT count(*) from customers w
 </tbody>
 </table>
 </div>
+<div id="start_campaign_dialog" style="display: none">
+<center>
+<br />
+Please select a list to run:<br />
+<br />
 <?t_updated and job_id = ".$row['id']);
         $temp_val = mysqli_fetch_assoc($result_num_count);        
         echo '<td>'.$temp_val['count(*)'].'</td>';
         
-        $result_num_count = mysqli_query($connection, "SELECT count(*) from customers where date_sub(now(), interval 20 day) < last_updated and date_sub(now(), int//erval 14 day) > last_updated and job_id = ".$row[
+        $result_num_count = mysqli_query($connection, "SELECT count(*) from customers where date_sub(now(), inecho '<select name="list_to_run">';
+    while ($row = mysqli_fetch_assoc($result)) {
+//        print_pre($row);
+        echo '<option value="'.$row['list_id'].'">'.$row['name'].'</option>';
+    }
+    echo '</select>';
+}
+echo "</center></div>";ated and job_id = ".$row[
