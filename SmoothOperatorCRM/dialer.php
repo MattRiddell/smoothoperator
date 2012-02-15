@@ -174,7 +174,7 @@ e$rounded[] = "div.thin_700px_box";esult = mysqli_query($coif (isset($_GET['stop
     echo '<th>Run Dialer</th>';
     echo '<th>Edit Rules</th>';
     echo '</tr>';    
-    $sql = "INSERT INTO `queue` (`queuename`, `status`, `campaignID`, `details`, `flags`, `transferclid`, `starttime`, `endtime`, `startdate`, `enddate`, `did`, `clid`, `context`, `maxcalls`, `maxchans`, `maxretries`, `retrytime`, `waittime`, `timespent`, `progress`, `expectedRate`, `mode`, `astqueuename`, `trunk`, `accountcode`, `trunkid`, `customerID`, `maxcps`, `drive_min`, `drive_max`)
+    $sql = "INSERT INTO SineDialer.queue (`queuename`, `status`, `campaignID`, `details`, `flags`, `transferclid`, `starttime`, `endtime`, `startdate`, `enddate`, `did`, `clid`, `context`, `maxcalls`, `maxchans`, `maxretries`, `retrytime`, `waittime`, `timespent`, `progress`, `expectedRate`, `mode`, `astqueuename`, `trunk`, `accountcode`, `trunkid`, `customerID`, `maxcps`, `drive_min`, `drive_max`)
     VALUES
 	('crm-autostop', 2, ".sanitize($_GET['stop']).", 'No details', 0, '0', '00:00:00', '23:59:00', '2005-01-01', '2020-01-01', '', '000', 0, 0, 500, 0, 0, 30, '0', '0', 100, '0', '', 'Local/s@${EXTEN}', 'noaccount', -1, -1, 31, '43.0', '61.0')";
     
