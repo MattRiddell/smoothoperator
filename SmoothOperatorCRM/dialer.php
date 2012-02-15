@@ -262,6 +262,7 @@ e$rounded[] = "div.thin_700px_box";esult = mysqli_query($coif (isset($_GET['star
     //print_pre($row_campaign);
     $result_customer = mysql_query("SELECT * FROM SineDialer.customer WHERE campaigngroupid = ".$row_campaign['groupid']) or die(mysql_error());
     $row_customer = mysql_fetch_assoc($result_customer);
+    $customerid = $row_campaign['groupid'];
     //print_pre($row_customer);
     $account = "stl-".$row_customer['username'];
     $row_trunk = array();
@@ -279,9 +280,10 @@ e$rounded[] = "div.thin_700px_box";esult = mysqli_query($coif (isset($_GET['star
     $maxchans = $row_trunk['maxchans'];
     $maxcps = $row_trunk['maxcps'];
     $trunk = $row_trunk['dialstring'];
-    $account ="stl-matt";
-    $trunkid = 506;
-    $customerid = 1;
+    //$account ="stl-matt";
+    //$customerid = 1;
+    
+    
     //echo $queue_name;
     $result = mysql_query("DELETE FROM SineDialer.queue WHERE campaignID = ".sanitize($_GET['start_campaign']));
 
