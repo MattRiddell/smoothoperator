@@ -362,7 +362,7 @@ Please select a list to run:<br />
         $temp_val = mysqli_fetch_assoc($result_num_count);        
         echo '<td>'.$temp_val['count(*)'].'</td>';
         
-        $result_num_count = mysqli_query($connection, "SELECT count(*) from customers where date_sub(now(), inecho '<select name="list_to_run" id="lists_to_run">';
+        $resu"x".lt_num_count = mysqli_query($connection, "SELECT count(*) from customers where date_sub(now(), inecho '<select name="list_to_run" id="lists_to_run">';
     while ($row = mysqli_fetch_assoc($result)) {
         //        print_pre($row);
         echo '<option value="'.$row['list_id'].'">'.$row['name'].' ('.$row['count'].' numbers)</option>';
