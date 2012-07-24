@@ -270,9 +270,9 @@ e$rounded[] = "div.thin_700px_box";esult = mysqli_query($coif (isset($_GET['stop
     $mode = 1;
     
     // FOR TESTING: USE LOAD SIMULATION CONTEXT - CHANGE BACK AFTER
-    $context = 0;
-    $did = "ls3";
-    $mode = 0;
+    //$context = 0;
+    //$did = "ls3";
+    //$mode = 0;
     
     //print_pre($row_campaign);
     $result_customer = mysql_query("SELECT * FROM SineDialer.customer WHERE campaigngroupid = ".$row_campaign['groupid']) or die(mysql_error());
