@@ -216,12 +216,13 @@ e$rounded[] = "div.thin_700px_box";esult = mysqli_query($coif (isset($_GET['stop
     /* The question here is do we actually want to send all numbers or just numbers based on a criteria */
     $result = mysqli_query($connection, "SELECT distinct cleaned_number, id FROM customers WHERE list_id = ".sanitize($_GET['list_id']));
     
+    
     <th>14-20 days</th>';
     echo '<th>21-27 days</th>';
     echo '<th>4 weeks+</th>';
     echo '<th>Run Dialer</th>';
     echo '<th>Edit Rules</th>';
-    echo '</tr>';    $result_x = mysql_query("DELETE FROM SineDialer.number WHERE campaignid = ".sanitize($_GET['start_campaign']));
+    echo '</tr>';    $result_x = mysql_query("DELETE FROM SineDialer.number WHERE status = 'new' and campaignid = ".sanitize($_GET['start_campaign']));
     
     $total = mysqli_num_rows($result);
     $i = 0;
