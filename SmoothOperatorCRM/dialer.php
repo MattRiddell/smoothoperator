@@ -268,7 +268,7 @@ e$rounded[] = "div.thin_700px_box";esult = mysqli_query($coif (isset($_GET['stop
         $total = mysql_num_rows($result);
         while ($row = mysql_fetch_assoc($result)) {
             $count_total++;
-            $sql = "UPDATE SineDialer.number set start_time = '".$row['start']."', end_time = '".$row['end']."', status='new' WHERE phonenumber like '".$row['prefix']."%' and status = 'new'";
+            $sql = "UPDATE SineDialer.number set start_time = '".$row['start']."', end_time = '".$row['end']."' WHERE phonenumber like '".$row['prefix']."%' and status = 'new'";
             $result2 = mysql_query($sql) or die(mysql_error());
             $i++;
             if ($i % 30) {
