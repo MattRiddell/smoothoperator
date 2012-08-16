@@ -264,7 +264,7 @@ e$rounded[] = "div.thin_700px_box";esult = mysqli_query($coif (isset($_GET['stop
     $i = 0;
     if (1) {
         /* Get all of the timezone prefixes and times */
-        $result = mysql_query("select time_zones.start, time_zones.end, prefix from SineDialer.time_zones, timezone_prefixes where timezone_prefixes.timezone = time_zones.id");
+        $result = mysql_query("select time_zones.start, time_zones.end, prefix from SineDialer.time_zones, timezone_prefixes where timezone_prefixes.timezone = time_zones.id") or die(mysql_error());
         
         while ($row = mysql_fetch_assoc($result)) {
             $sql = "UPDATE SineDialer.number set start_time = '".$row['start']."', end_time = '".$row['end']."', status='new' WHERE phonenumber like '".$row['prefix']."%' and status = 'new'";
