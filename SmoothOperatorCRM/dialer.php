@@ -223,7 +223,7 @@ e$rounded[] = "div.thin_700px_box";esult = mysqli_query($coif (isset($_GET['stop
     echo '<th>4 weeks+</th>';
     echo '<th>Run Dialer</th>';
     echo '<th>Edit Rules</th>';
-    echo '</tr>';    $result_x = mysql_query("DELETE FROM SineDialer.number WHERE status = 'new' and campaignid = ".sanitize($_GET['start_campaign']));
+    echo '</tr>';    //$result_x = mysql_query("DELETE FROM SineDialer.number WHERE status = 'new' and campaignid = ".sanitize($_GET['start_campaign']));
     
     $total = mysqli_num_rows($result);
     $i = 0;
